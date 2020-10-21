@@ -33,7 +33,9 @@ int main( int argc, char** argv ) {
         //TODO: loop avi file
       }
 
-      cap.set(cv::CAP_PROP_POS_FRAMES, 1);
+      //DEV STUFF
+      std::cout << cap.get(cv::CAP_PROP_POS_FRAMES) << std::endl;
+      // cap.set(cv::CAP_PROP_POS_FRAMES, 1);
 
       //make Gaussian blur and show processed image
       cv::GaussianBlur(frame, bluredFrame, cv::Size(5,5), 0);
@@ -65,15 +67,15 @@ int main( int argc, char** argv ) {
       cv::putText(hsvFrame, "ValueMIN:"+std::to_string(valueSliderMin)+" ValueMAX:"+std::to_string(valueSliderMax), cv::Point(5,33), cv::FONT_HERSHEY_DUPLEX, 0.5, CV_RGB(0,0,0), 2);
 
       //DO NOT TOUCH THE KEY!!!!
-      int key = cv::waitKey(0);
-      if(key == 'x'){
+      int key = cv::waitKey(1000.0/60.0 )&0x0ff;
+      if(key == 'x' ){
         //Saving ROI (selectOIR doesn't work on my linux can't figure it out, but this is what it should look like)
-        // cv::Rect roi = cv::selectROI("Basic",frame);
-        cv::Rect roi;
-        roi.x = 0;
-        roi.y = 00;
-        roi.width = 100;
-        roi.height = 100;
+        cv::Rect roi = cv::selectROI("Basic",frame);
+        // cv::Rect roi;
+        // roi.x = 0;
+        // roi.y = 00;
+        // roi.width = 200;
+        // roi.height = 200;
         cv::Mat imCrop = frame(roi);
         cv::imwrite("screen_shot.png", imCrop);
       }
@@ -86,7 +88,7 @@ int main( int argc, char** argv ) {
       cv::imshow("Inrange", hsvInRangeFrame);
 
         //czekaj na klawisz, sprawdz czy to jest 'esc'
-        if(key == 27) capturing = false;
+        if(key == 27 ) capturing = false;
     } while( capturing );
 
     return 0;
