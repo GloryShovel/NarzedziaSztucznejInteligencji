@@ -68,6 +68,7 @@ int main( int argc, char** argv ) {
       cv::putText(hsvFrame, "ValueMIN:"+std::to_string(valueSliderMin)+" ValueMAX:"+std::to_string(valueSliderMax), cv::Point(5,33), cv::FONT_HERSHEY_DUPLEX, 0.5, CV_RGB(0,0,0), 2);
 
       //DO NOT TOUCH THE KEY!!!!
+      //This value is not something that i calculated, but its frame rate dependent
       int key = cv::waitKey(1000.0/60.0 )&0x0ff;
       if(key == 'x' ){
         //Saving ROI (selectOIR doesn't work on my linux can't figure it out, but this is what it should look like)
