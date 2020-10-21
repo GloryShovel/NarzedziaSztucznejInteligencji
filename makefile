@@ -7,4 +7,4 @@ $(APP).o: $(APP).cpp
 	g++ `pkg-config --cflags opencv` $(APP).cpp -c
 
 clean:
-	rm -f $(APP)
+	rm -f $(APP) *.o

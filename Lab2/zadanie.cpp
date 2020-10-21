@@ -71,12 +71,12 @@ int main( int argc, char** argv ) {
       int key = cv::waitKey(1000.0/60.0 )&0x0ff;
       if(key == 'x' ){
         //Saving ROI (selectOIR doesn't work on my linux can't figure it out, but this is what it should look like)
-        // cv::Rect roi = cv::selectROI("Basic",frame);
-        cv::Rect roi;
-        roi.x = 0;
-        roi.y = 0;
-        roi.width = 200;
-        roi.height = 200;
+        cv::Rect roi = cv::selectROI("Basic",frame);
+        // cv::Rect roi;
+        // roi.x = 0;
+        // roi.y = 0;
+        // roi.width = 200;
+        // roi.height = 200;
         cv::Mat imCrop = frame(roi);
         cv::imwrite("screen_shot.png", imCrop);
       }
