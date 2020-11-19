@@ -29,7 +29,7 @@ cv::Point makeVector(cv::Point a, cv::Point b) {
 int main()
 {
 	//Dev Settings
-	bool showAllWindows = false, showContours = false, showConectingLine = false;
+	bool showAllWindows = true, showContours = true, showConectingLine = false;
 
 	bool isMusicPlaing = false;
 
