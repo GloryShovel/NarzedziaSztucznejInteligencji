@@ -11,6 +11,10 @@ float sphereFunction(float x, int n){
     return result;
 }
 
+float leviFunction(float x, float y){
+    return (pow(sin(3*M_PI*x), 2)) + (pow(x-1, 2) * (1+pow(sin(3*M_PI*y), 2))) + (pow((y-1),2) * (1+pow(sin(2*M_PI*y), 2)));
+}
+
 float bealeFunction(float x, float y){
     return std::pow(1.5-x+(x*y),2)+std::pow(2.25-x+std::pow(x*y,2),2)+std::pow(2.625-x+std::pow(x*y,3),2);
 }
@@ -99,9 +103,13 @@ void randemonium( int argc, char** argv){
             //beale
             randomProbe(bealeFunction, -4.5, 4.5, atoi(argv[2]));
 
-        } else if(option == 3) {
+        }else if(option == 3) {
             //booth
             randomProbe(boothFunction, -10, 10, atoi(argv[2]));
+
+        }else if(option == 4) {
+            //levi
+            randomProbe(leviFunction, -10, 10, atoi(argv[2]));
 
         }else{
             std::cout << "Nie znaleziono takiej flagi!" << std::endl;
@@ -146,10 +154,13 @@ void hill(int argc, char** argv ){
             //beale (-4.5 4,5)
             hillClimbing(bealeFunction, atof(argv[3]), atof(argv[4]));
 
-        } else if(option == 3) {
+        }else if(option == 3) {
             //booth (-10 10)
             hillClimbing(boothFunction, atof(argv[3]), atof(argv[4]));
 
+        }else if(option == 4) {
+            //levi (-10 10)
+            hillClimbing(leviFunction, atof(argv[3]), atof(argv[4]));
         }else{
             std::cout << "Nie znaleziono takiej flagi!" << std::endl;
         }
